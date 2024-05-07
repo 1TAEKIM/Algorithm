@@ -1,3 +1,5 @@
-S = input()
+n = input()
 
-print(len(S))
+print()
+
+
