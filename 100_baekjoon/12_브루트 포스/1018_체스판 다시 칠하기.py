@@ -52,3 +52,5 @@ print(tar)
 #                     cnt += 1
 #
 # print(cnt)
+
+# Linux Master 1급 가자!!
