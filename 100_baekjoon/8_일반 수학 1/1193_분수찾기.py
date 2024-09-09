@@ -1,33 +1,22 @@
-import sys
+# 짝수 라인: 분모가 1씩 늘어나고 분자가 1씩 줄어듦
+# 홀수 라인: 분모가 1씩 줄어들고 분자가 1씩 늘어남
 
-n = int(sys.stdin.readline())
+N = int(input())
 
-x = 1
-y = 1
+line = 0
+line_end_num = 0
 
-cnt = 1
-while True:
-    if cnt == n: break
-    if x == 1:
-        old_y = y
-        y += 1
-        cnt += 1
-        if cnt == n: break
+while line_end_num < N: # 주어진 수가 몇 번째 라인에 속해있는지 확인
+    line += 1
+    line_end_num += line
 
-        for _ in range(y - 1):
-            x += 1
-            y -= 1
-            cnt += 1
-            if cnt == n: break
+K = line_end_num - N # 끝번째 수와 주어진 수의 차
 
-    elif y == 1:
-        x += 1
-        cnt += 1
-        if cnt == n: break
-        for _ in range(x - 1):
-            x -= 1
-            y += 1
-            cnt += 1
-            if cnt == n: break
+if line % 2 == 0: # 짝수 라인일 때
+    a = line - K
+    b = K + 1
+else:
+    a = K + 1
+    b = line - K
 
-print(f'{x}/{y}')
+print(f'{a}/{b}') # 정수 형태인 a, b를 문자열로 바꾸어 출력
