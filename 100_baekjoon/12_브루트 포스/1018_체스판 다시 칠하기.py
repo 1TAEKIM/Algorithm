@@ -5,52 +5,63 @@ for i in range(n):
     row = input()
     arr.append(list(row))
 
-print(arr[0])
-tar = []
+# 시작이 W 인 경우와 B 인 경우 모두 확인해야함.
+def white_cnt(arr):
+    cnt = 0
+    for i in range(8):
+        for j in range(8):
+            if i % 2 == 0 and j % 2 == 0:
+                if arr[i][j] != 'W':
+                    cnt += 1
+
+            elif i % 2 == 1 and j % 2 == 1:
+                if arr[i][j] != 'W':
+                    cnt += 1
+
+            elif i % 2 == 0 and j % 2 == 1:
+                if arr[i][j] != 'B':
+                    cnt += 1
+
+            elif i % 2 == 1 and j % 2 == 0:
+                if arr[i][j] != 'B':
+                    cnt += 1
+    return cnt
+
+def black_cnt(arr):
+    cnt = 0
+    for i in range(8):
+        for j in range(8):
+            if i % 2 == 0 and j % 2 == 0:
+                if arr[i][j] != 'B':
+                    cnt += 1
+
+            elif i % 2 == 1 and j % 2 == 1:
+                if arr[i][j] != 'B':
+                    cnt += 1
+
+            elif i % 2 == 0 and j % 2 == 1:
+                if arr[i][j] != 'W':
+                    cnt += 1
+
+            elif i % 2 == 1 and j % 2 == 0:
+                if arr[i][j] != 'W':
+                    cnt += 1
+
+    return cnt
+
+result = []
+
 for i in range(n - 7):
     for j in range(m - 7):
-        tar.append(arr[i][j])
+        tmp_arr = []
+        for k in range(i, i + 8):
+            tmp = []
+            for l in range(j, j + 8):
+                tmp.append(arr[k][l])
 
-print(tar)
-# cnt = 0
-# if arr[0][0] == 'W':
-#     for i in range(n):
-#         for j in range(m):
-#             if i % 2 == 0 and j % 2 == 0:
-#                 if arr[i][j] != 'W':
-#                     cnt += 1
-#
-#             elif i % 2 == 1 and j % 2 == 1:
-#                 if arr[i][j] != 'W':
-#                     cnt += 1
-#
-#             elif i % 2 == 0 and j % 2 == 1:
-#                 if arr[i][j] != 'B':
-#                     cnt += 1
-#
-#             elif i % 2 == 1 and j % 2 == 0:
-#                 if arr[i][j] != 'B':
-#                     cnt += 1
-#
-# else:
-#     for i in range(n):
-#         for j in range(m):
-#             if i % 2 == 0 and j % 2 == 0:
-#                 if arr[i][j] != 'B':
-#                     cnt += 1
-#
-#             elif i % 2 == 1 and j % 2 == 1:
-#                 if arr[i][j] != 'B':
-#                     cnt += 1
-#
-#             elif i % 2 == 0 and j % 2 == 1:
-#                 if arr[i][j] != 'W':
-#                     cnt += 1
-#
-#             elif i % 2 == 1 and j % 2 == 0:
-#                 if arr[i][j] != 'W':
-#                     cnt += 1
-#
-# print(cnt)
+            tmp_arr.append(tmp)
+        # print((tmp_arr))
+        result.append(white_cnt(tmp_arr))
+        result.append(black_cnt(tmp_arr))
 
-# Linux Master 1급 가자!!
+print(min(result))
