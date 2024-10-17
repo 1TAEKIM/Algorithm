@@ -1,12 +1,13 @@
 n = int(input())
 
 arr = []
-eql = []
+
 for i in range(n):
-    tmp = list(input().split())
-    arr.append(tmp)
-    if arr[i - 1][0] == arr[i][0]:
-       eql.append(tmp)
+    age, name = map(str, input().split())
+    arr.append((int(age), name))
 
-arr = sorted(arr)
+# (age, name)에서 age만 비교
+arr.sort(key= lambda x : x[0])
 
+for i in arr:
+    print(i[0], i[1])
