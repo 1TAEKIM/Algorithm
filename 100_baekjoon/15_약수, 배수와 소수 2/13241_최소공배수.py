@@ -9,3 +9,4 @@ if a > b:
             re = a % b
             a = b
             b = re
+
