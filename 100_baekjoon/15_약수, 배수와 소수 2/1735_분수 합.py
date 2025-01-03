@@ -18,8 +18,6 @@ if gcd == 1:
 else:
     u = u // gcd
     d = d // gcd
-    while gcd == 1:
-        gcd = eucl(u, d)
-        u = u // gcd
-        d = d // gcd
     print(u, d)
+
+# !! 기약분수는 분모와 분자를 각각 최대공약수로 나눈 값 !! #
