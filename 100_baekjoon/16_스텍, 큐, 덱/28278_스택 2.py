@@ -1,17 +1,26 @@
-n = int(input())
+import sys
+
+n = int(sys.stdin.readline())
 
 stack = []
 
-for _ in range(n):
-    num = input()
+cmd = []
+for i in range(n):
+    tmp = sys.stdin.readline().strip()
+    cmd.append(tmp)
+
+# print(cmd)
+for i in range(n):
+    num = cmd[i]
 
     if num[0] == '1':
-        stack.append(int(num[-1]))
+        # num[-1]로 할 경우에, 1 10이면 0만 추가됨!!
+        stack.append(int(num[2:]))
 
     elif num == '2':
         if len(stack) > 0:
             # pop method는 시간 복잡도가 O(N)
-            print(stack.pop(-1))
+            print(stack.pop())
         else:
             print(-1)
 
