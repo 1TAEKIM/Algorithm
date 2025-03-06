@@ -2,20 +2,13 @@ import sys
 
 n = int(sys.stdin.readline())
 
-arr = []
+arr = ['ChongChong']
 cnt = 0
 for i in range(n):
     a, b = sys.stdin.readline().split()
-    if len(arr) == 0:
-        arr.append(a)
+    if a in arr:
         arr.append(b)
-        cnt += 2
+    elif b in arr:
+        arr.append(a)
 
-    else:
-        if arr[-1] == a:
-            arr.append(b)
-            cnt += 1
-
-
-print()
-# 머릿 속 복잡
+print(len(set(arr)))
