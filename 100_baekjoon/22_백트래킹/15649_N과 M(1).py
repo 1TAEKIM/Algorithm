@@ -1,5 +1,11 @@
 import sys
 
-n, m = map(int, sys.stdin.readline().split())
+def dfs_stack(graph, start):
+    visited = set()
+    stack = [start]
+
+    while stack:
+        vertex = stack.pop()
+
 
 
